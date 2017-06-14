@@ -262,6 +262,11 @@ FBBotFramework.prototype.middleware = function () {
                     if (event.message && event.message.attachments) {
                         bot.emit('attachment', sender, event.message.attachments);
                     }
+                    
+                    // Trigger optin Listener
+                    if (event.optin && event.optin.ref) {
+                        bot.emit('optin', sender, event.optin.ref);
+                    }
 
                 });
             });
