@@ -149,6 +149,30 @@ FBBotFramework.prototype.sendButtonMessage = function (recipient, text, buttons,
     this.send(recipient, messageData, notificationType, cb);
 };
 
+FBBotFramework.prototype.sendSenderAction = function (recipient, senderAction) {
+
+	// https://developers.facebook.com/docs/messenger-platform/send-messages/sender-actions
+	
+    var req = {
+        url: FB_MESSENGER_ENDPOINT,
+        qs: {access_token: this.page_token},
+        method: "POST",
+        json: {
+            recipient: {id: recipient},
+            sender_action: senderAction,
+        }
+    };
+
+    request(req, function (err, res, body) {
+        if (cb) {
+            if (err) return cb(err);
+            if (body.error) return cb(body.error);
+            cb(null, body);
+        }
+    });
+
+	
+};
 
 // Limitation
 // Title: 45 characters
