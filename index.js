@@ -149,7 +149,7 @@ FBBotFramework.prototype.sendButtonMessage = function (recipient, text, buttons,
     this.send(recipient, messageData, notificationType, cb);
 };
 
-FBBotFramework.prototype.sendSenderAction = function (recipient, senderAction) {
+FBBotFramework.prototype.sendSenderAction = function (recipient, senderAction, cb) {
 
 	// https://developers.facebook.com/docs/messenger-platform/send-messages/sender-actions
 	
